@@ -6,7 +6,7 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:03:20 by kblanche          #+#    #+#             */
-/*   Updated: 2026/03/24 15:19:45 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/03/28 19:58:17 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,10 @@ void	send_byte(int server_pid, char to_send)
 	}
 }
 
-// void	send_size(int server_pid, size_t size)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (i < sizeof(size_t) * 8 - 1)
-// 	{
-// 		if ((size & ((size_t)1 << (sizeof(size_t) * 8 - 1))) == 0)
-// 			kill(server_pid, SIGUSR1);
-// 		else
-// 			kill(server_pid, SIGUSR2);
-// 		size <<= 1;
-// 		++i;
-// 		usleep(500);
-// 	}
-// }
-
 void	send_string(int server_pid, char *str)
 {
 	size_t	i;
 
-	//send_size(server_pid, len);
 	while (str[i])
 	{
 		send_byte(server_pid, str[i]);
