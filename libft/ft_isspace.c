@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 19:58:49 by kblanche          #+#    #+#             */
-/*   Updated: 2026/03/28 21:53:03 by kblanche         ###   ########.fr       */
+/*   Created: 2026/03/28 20:51:56 by kblanche          #+#    #+#             */
+/*   Updated: 2026/03/28 20:54:24 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printfft.h"
-#include <stdarg.h>
-#include <stddef.h>
-#include <unistd.h>
+#include "libft.h"
 
-int	ft_printf(const char *str, ...)
+int	ft_isspace(char c)
 {
-	va_list		args;
-	int			ret;
-
-	if (!str)
-		return (-1);
-	va_start(args, str);
-	ret = ft_printf_va(STDOUT_FILENO, str, &args);
-	va_end(args);
-	return (ret);
+	return (c == ' ' || (c >= '\t' && c <= '\r'));
 }

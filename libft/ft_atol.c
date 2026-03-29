@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 19:58:49 by kblanche          #+#    #+#             */
-/*   Updated: 2026/03/28 21:53:03 by kblanche         ###   ########.fr       */
+/*   Created: 2026/03/28 20:49:38 by kblanche          #+#    #+#             */
+/*   Updated: 2026/03/28 21:26:05 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printfft.h"
-#include <stdarg.h>
-#include <stddef.h>
-#include <unistd.h>
+#include "libft.h"
 
-int	ft_printf(const char *str, ...)
+long int	ft_atol(const char *str)
 {
-	va_list		args;
-	int			ret;
+	long int			i;
+	long int			sign;
+	unsigned long int	result;
 
-	if (!str)
-		return (-1);
-	va_start(args, str);
-	ret = ft_printf_va(STDOUT_FILENO, str, &args);
-	va_end(args);
-	return (ret);
+	i = 0;
+	sign = 1;
+	result = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (ft_isdigit(str[i]))
+	{
+		result *= 10;
+		result += str[i] - '0';
+		i++;
+	}
+	return (result * sign);
 }

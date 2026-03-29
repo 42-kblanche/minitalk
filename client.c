@@ -6,10 +6,12 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:03:20 by kblanche          #+#    #+#             */
-/*   Updated: 2026/03/28 19:58:17 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/03/28 22:18:11 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./libft/libft.h"
+#include "./libft/printfft.h"
 #include <signal.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -31,6 +33,7 @@ void	send_byte(int server_pid, char to_send)
 			kill(server_pid, SIGUSR2);
 		to_send <<= 1;
 		++i;
+		usleep(500);
 	}
 }
 
@@ -38,11 +41,13 @@ void	send_string(int server_pid, char *str)
 {
 	size_t	i;
 
+	i = 0;
 	while (str[i])
 	{
 		send_byte(server_pid, str[i]);
 		++i;
 	}
+	send_byte(server_pid, '\0');
 }
 
 int	main(int argc, char **argv)
@@ -51,9 +56,12 @@ int	main(int argc, char **argv)
 	char	*str;
 
 	if (argc != 3)
-		write(STDERR_FILENO, ARG_ERROR, 25);
-	server_pid = atoi(argv[1]);
-	str = strdup(argv[2]);
+	{
+		ft_errorf(ARG_ERROR);
+		return (1);
+	}
+	server_pid = ft_atoi(argv[1]);
+	str = ft_strdup(argv[2]);
 	send_string(server_pid, str);
 	free(str);
 }

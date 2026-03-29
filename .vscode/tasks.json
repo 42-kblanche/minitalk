@@ -6,7 +6,7 @@
 			"label": "build test",
 			"command": "make",
 			"args": [
-				"test",
+				"debug",
 			],
 			"group": {
 				"kind": "build",

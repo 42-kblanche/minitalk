@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putf.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include <unistd.h>
 
-int	ft_printf(const char *str, ...)
+int	ft_putf(int fd, const char *str, ...)
 {
 	va_list		args;
 	int			ret;
@@ -23,7 +23,7 @@ int	ft_printf(const char *str, ...)
 	if (!str)
 		return (-1);
 	va_start(args, str);
-	ret = ft_printf_va(STDOUT_FILENO, str, &args);
+	ret = ft_printf_va(fd, str, &args);
 	va_end(args);
 	return (ret);
 }

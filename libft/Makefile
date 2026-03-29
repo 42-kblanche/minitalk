@@ -7,6 +7,10 @@ YELLOW = \033[0;33m
 BLUE = \033[0;34m
 
 SRCS = ft_calloc.c \
+	   ft_atoi.c \
+	   ft_atol.c \
+	   ft_isspace.c \
+	   ft_isdigit.c \
 	   ft_itoa.c \
 	   ft_itoh.c \
 	   ft_memcpy.c \
@@ -31,7 +35,10 @@ SRCS = ft_calloc.c \
 	   buffft/ft_buff_substr.c \
 	   printfft/ft_printf_parse.c \
 	   printfft/ft_printf_parse_2.c \
-	   printfft/ft_printf.c
+	   printfft/ft_errorf.c \
+	   printfft/ft_putf.c \
+	   printfft/ft_printf.c \
+	   printfft/ft_printf_va.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

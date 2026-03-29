@@ -6,7 +6,7 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 01:12:35 by kblanche          #+#    #+#             */
-/*   Updated: 2026/01/25 02:03:22 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/03/28 21:52:13 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ typedef enum e_print
 }	t_print;
 
 int		ft_printf(const char *str, ...);
+int		ft_putf(int fd, const char *str, ...);
+int		ft_printf_va(int fd, const char *str, va_list *args);
+int		ft_errorf(const char *str, ...);
 void	ft_printf_parse(t_buff *out, size_t *cursor, va_list *args);
 void	ft_printf_parse_char(t_buff *out, size_t *cursor, va_list *args);
 void	ft_printf_parse_string(t_buff *out, size_t *cursor, va_list *args);

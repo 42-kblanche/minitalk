@@ -6,11 +6,10 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 10:12:14 by kblanche          #+#    #+#             */
-/*   Updated: 2026/03/28 19:06:35 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/03/29 16:29:35 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <bits/types/siginfo_t.h>
 #include "libft/printfft.h"
 #include "libft/buffft.h"
 #include <signal.h>
@@ -39,8 +38,9 @@ void	interpret_bit(int value)
 		ft_buff_append(&g_buffer, &current_byte, 1);
 		if (!current_byte)
 		{
-			ft_buff_print(&g_buffer, 1);
-			g_buffer.curr_size = 0;
+			ft_buff_print(&g_buffer, STDOUT_FILENO);
+			// ft_buff_destroy(&g_buffer);
+			// ft_buff_init(&g_buffer);
 		}
 		current_byte = 0;
 		current_bit = 0;
@@ -61,7 +61,7 @@ int	main(void)
 
 	ft_buff_init(&g_buffer);
 	act.sa_handler = receive_sig;
-	ft_printf("SERVER PID: %d \n", getpid());
+	ft_printf("SERVER PID: %i \n", getpid());
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
 	while (1)

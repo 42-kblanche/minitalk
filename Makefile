@@ -7,7 +7,6 @@ all: CFLAGS = -Wall -Wextra -Werror
 all: DMODE =
 debug: CFLAGS = -Wall -Wextra -Werror -g
 debug: DMODE = (debug mode)\n
-BUFF_SIZE = -D BUFFER_SIZE=1
 NEUTRAL = \033[0;0m
 RED = \033[0;31m
 YELLOW = \033[0;33m
@@ -30,15 +29,15 @@ re: fclean all
 $(NAME): $(LIBFT) $(SNAME) $(CNAME)
 
 $(CNAME): $(COBJS)
-	@$(CC) $(CFLAGS) $^ -o $@
+	@$(CC) $(CFLAGS) $^ -L. -lft -o $@
 	@printf "${YELLOW}Building ${BLUE}$@ ${YELLOW}${DMODE}\n${NEUTRAL}"
 
 $(SNAME): $(SOBJS)
-	@$(CC) $(CFLAGS) $^ -o $@
+	@$(CC) $(CFLAGS) $^ -L. -lft -o $@
 	@printf "${YELLOW}Building ${BLUE}$@ ${YELLOW}${DMODE}\n${NEUTRAL}"
 
 %.o: %.c
-	@$(CC) $(CFLAGS) $(BUFF_SIZE) -o $@ -c $^
+	@$(CC) $(CFLAGS) -o $@ -c $^
 	@printf "Compiling ${BLUE}$^ ${YELLOW}${DMODE}\n${NEUTRAL}"
 
 $(LIBFT):
