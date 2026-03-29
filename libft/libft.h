@@ -6,7 +6,7 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 19:57:13 by kblanche          #+#    #+#             */
-/*   Updated: 2026/03/28 21:27:32 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/03/29 19:34:44 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		ft_putstr_fd(char *s, int fd);
 char		*ft_strdup(const char *s);
 char		*ft_memdup(const char *buff, size_t size);
 ssize_t		ft_strfind(const char *haystack, const char *needle);
-ssize_t		ft_bufffind(const char *haystack, const char *needle, 
+ssize_t		ft_bufffind(const char *haystack, const char *needle,
 				size_t max_len);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 size_t		ft_strlen(const char *str);
